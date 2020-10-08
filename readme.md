@@ -18,3 +18,10 @@ git add 文件
 git pull 就可以了
 
 或者使用git stash 先将本地的修改暂存起来，git pull 之后再 git stash pop 一下。
+
+git config --global alias.别名  要替换的名字：
+如: git config --global  alias.st  status
+	git config --global  alias.co  checkout
+	git config --global  alias.last log -1 HEAD
+	
+通过git config -l可以查看你设置过的所有别名
