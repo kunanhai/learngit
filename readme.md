@@ -52,6 +52,7 @@ git log --stat	查看简化版的diff日志信息。只会给出某个文件增�
 
 或者使用git stash 先将本地的修改暂存起来，git pull 之后再 git stash pop 一下。
 
+
 ## 别名使用，提高效率
 git config --global alias.别名  要替换的名字：
 如: git config --global  alias.st  status
