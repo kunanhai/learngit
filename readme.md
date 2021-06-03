@@ -60,3 +60,11 @@ git config --global alias.别名  要替换的名字：
 	git config --global  alias.last log -1 HEAD
 	
 通过git config -l可以查看你设置过的所有别名
+
+## 常见问题
+1. git remote add origin url 命令解析
+url 是线上库的地址，origin为线上仓的别名，后面的git push origin master 代表将master分支的内容push到线上origin仓上
+
+2. OpenSSL问题，有时候是网络卡顿的原因，github国内网速有点慢，解决方法是 git config --global http.sslVerity "false"
+
+3. refuse to merge unrelated histories. 原因不清楚，感觉是两个仓是独立导致的。解决办法是merge分支的时候加上 --allow-unrelated-histories
