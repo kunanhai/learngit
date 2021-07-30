@@ -4,12 +4,20 @@
 3. 此时只有一个master分支，一般还需要别的分支，比如dev开发分支等，在另外一个分支上工作，如果你希望将远程仓库的dev分支也克隆下来，则执行 git checkout -b dev origin/dev
 接下来就可以在本地工作了 
 
+新建分支的步骤可以分成两个：
+git branch hello    创建hello 分支
+git checkout hello  跳转到hello分支
+
 ##　将本地项目上传到github
 1. git init
+git init的作用是初始化git本地仓库。
 git add .
 git commit . -m "message"
+到这里本地仓库已经有你的修改记录了
 2. git remote add origin url 将远程仓库连接到本地仓库
-3. git push -u origin master    将本地库的内容推送到github的远程仓库master分支上面(-u 是--set-upstream的简写)，第一次需要这样做，下次再推送的时候直接执行git push origin master就可以了（但前提是上一步必须加-u)
+origin是你远端仓库的名称，github上一般都是origin。 url是远端仓库的地址，复制即可。
+3. git push -u origin master    将本地库master分支上修改的内容推送到github的远程仓库master分支上面(-u 是--set-upstream的简写)，第一次需要这样做，下次再推送的时候直接执行git push origin master就可以了（但前提是上一步必须加-u)
+（注意： 如果远程库上没有建立master分支，一般发生在第一次提交新分支的时候，github会主动创建分支）
 
 ## 创建分支： 
 1. git branch note  //创建note分支
@@ -26,6 +34,10 @@ git push --set-upstream origin note //将note分支上传到github上
 4. git commit -m "delete doc"
 5. git push origin master //推送本次更改
 
+## 如何把dev分支的修改合并到主干分支（main）上
+1. 现在dev分支上做提交，并git push后
+2. 本地切换到main分支， git merge dev
+3. 本地main分支已经带上修改了，这个时候再git add, commit, push一下
 ## 常用的git回撤操作
 1. commit回滚
    git reset --soft HEAD^ ： --soft保持之前的修改不被丢弃，（不要用--hard, 修改会被直接丢弃), HEAD^ 等于HEAD~1, 表示回滚到上个版本
@@ -35,8 +47,8 @@ git checkout -- 文件名： 将非暂存区的文件的修改丢弃（对于删
 
 ## 远程仓库操作
 git remote -v    查看远端仓库的分支
-git remote add 远端仓库的别名  <url>   新建一个远端仓库
-git remote rm 远端仓库的别名           删除一个远端仓库
+git remote add 远端仓库的别名  <url>   (新建一个远端仓库)
+git remote rm 远端仓库的别名           (删除一个远端仓库)
 git remote rename origin_ssl origin    将origin_ssl 改名为origin
 git remote show origin   可以查看push到origin远端的那个分支
 
